@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Classroom | home
+    ClassRoom
 @endsection
 
 @section('stylelink')
@@ -9,5 +9,13 @@
 
 
 @section('content')
-    <h1>hello</h1>
+    <section id="hero" class="d-flex justify-content-center align-items-center">
+        <img src="/assets/heroImage.jpg" alt="hero image" class="heroImage" />
+        <div class="container text-center title text-white">
+            <h1 class="text-capitalize font-weight-bold mb-3">Welcome To ClassRoom</h1>
+            <a href="{{ route('register') }}">
+                Get Started
+            </a>
+        </div>
+    </section>
 @endsection
