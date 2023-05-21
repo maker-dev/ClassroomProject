@@ -5,7 +5,7 @@
 }
 
 #hero .heroImage {
-    filter: grayscale(.4);
+    filter: grayscale(0.4);
     height: 100%;
     position: absolute;
     width: 100%;
@@ -13,6 +13,7 @@
 
 #hero .title {
     z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.566);
 }
 
 #hero a {
@@ -21,11 +22,14 @@
     font-weight: bold;
     font-size: 18px;
     padding: 6px;
-    color: var(--secondary);
+    color: white;
     background-color: var(--primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.566);
     transition: 0.2s;
 }
 
 #hero a:hover {
-    background-color: #d0ae6a;
+    background-color: #b77a00;
+    color: rgb(224, 244, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.875);
 }
