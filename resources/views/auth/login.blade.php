@@ -85,7 +85,7 @@
                                 <div class="form-features">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="remember_me" name="remember">
-                                        <label class="form-check-label" for="remember_me">remember</label>
+                                        <label class="form-check-label" for="remember_me">remember me</label>
                                     </div>
                                     <a href="{{ route('password.request') }}" class="forgetpass-link">forgot password ?</a>
                                 </div>

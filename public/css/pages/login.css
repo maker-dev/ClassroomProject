@@ -1,11 +1,11 @@
 #login {
     min-height: 100vh;
-    background-color: var(--secondary-color)
+    background-color: var(--secondary-color);
 }
 
 #login .backhome img {
-    width: 60px;
-    margin-bottom: 60px;
+    width: 80px;
+    margin-bottom: 40px;
 }
 
 #login .form-title {
@@ -13,7 +13,7 @@
     font-weight: 600;
     line-height: 1.5625rem;
     letter-spacing: 0.5px;
-    color: var(--secondary-color)
+    color: var(--secondary-color);
 }
 
 #login .form-floating label {
@@ -41,5 +41,5 @@
 
 #login .forgetpass-link,
 #login .createacc-link {
-    color: var(--secondary-color)
+    color: var(--secondary-color);
 }
