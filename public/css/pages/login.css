@@ -1,0 +1,45 @@
+#login {
+    min-height: 100vh;
+    background-color: var(--secondary-color)
+}
+
+#login .backhome img {
+    width: 60px;
+    margin-bottom: 60px;
+}
+
+#login .form-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5625rem;
+    letter-spacing: 0.5px;
+    color: var(--secondary-color)
+}
+
+#login .form-floating label {
+    font-size: 14px;
+    color: gray;
+}
+
+#login .form-features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#login .login-btn {
+    width: 100%;
+}
+
+#login .form-footer .notice {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    letter-spacing: 0.1px;
+    display: block;
+}
+
+#login .forgetpass-link,
+#login .createacc-link {
+    color: var(--secondary-color)
+}

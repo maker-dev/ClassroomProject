@@ -9,6 +9,7 @@
 
 
 @section('content')
+    @include('components.header')
     <section id="hero" class="d-flex justify-content-center align-items-center">
         <img src="/assets/heroImage.jpg" alt="hero image" class="heroImage" />
         <div class="container text-center title text-white">

@@ -28,8 +28,6 @@
     <link rel="stylesheet" href="/css/global/rules.css" />
     <!--header file css-->
     <link rel="stylesheet" href="/css/components/header.css" />
-    <!--footer file css-->
-    <link rel="stylesheet" href="/css/components/footer.css" />
     <!--page css file -->
     @section('stylelink')
     @show
@@ -37,14 +35,8 @@
 </head>
 
 <body>
-    <!--header-->
-    @include('components.header')
     <!--contents-->
-    <div>
-        @yield('content')
-    </div>
-    <!--footer-->
-    @include('components.footer')
+    @yield('content')
     <!--bootstrap5 js cdn-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

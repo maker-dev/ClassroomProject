@@ -1,5 +1,5 @@
 header {
-    background-color: var(--secondary);
+    background-color: var(--secondary-color);
 }
 
 header .logo {
@@ -18,5 +18,5 @@ header .nav-item a {
 }
 
 header .nav-item a:hover {
-    color: var(--primary) !important;
+    color: var(--primary-color) !important;
 }
