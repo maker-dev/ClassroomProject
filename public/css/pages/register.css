@@ -1,14 +1,14 @@
-#login {
+#register {
     min-height: 100vh;
     background-color: var(--secondary-color);
 }
 
-#login .backhome img {
+#register .backhome img {
     width: 80px;
     margin-bottom: 40px;
 }
 
-#login .form-title {
+#register .form-title {
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.5625rem;
@@ -17,22 +17,16 @@
     text-transform: capitalize;
 }
 
-#login .form-floating label {
+#register .form-floating label {
     font-size: 14px;
     color: gray;
 }
 
-#login .form-features {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#login .login-btn {
+#register .register-btn {
     width: 100%;
 }
 
-#login .form-footer .notice {
+#register .form-footer .notice {
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
@@ -40,7 +34,6 @@
     display: block;
 }
 
-#login .forgetpass-link,
-#login .createacc-link {
+#register .createacc-link {
     color: var(--secondary-color);
 }

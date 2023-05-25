@@ -1,25 +1,51 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+@extends('layouts.master')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('title')
+    ClassRoom | forgot-password
+@endsection
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+@section('stylelink')
+    <link rel="stylesheet" href="/css/pages/forgot-password.css" />
+@endsection
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+    <main id='forgot-password' class='d-flex justify-content-center align-items-center'>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 m-auto">
+                    <div class="card border-0 shadow p-2 border-radius my-4">
+                        <div class="card-body text-center">
+                            <a href="{{ route('landing') }}" class="backhome">
+                                <img src="/assets/logo.png" alt="logo" />
+                            </a>
+                            <h1 class="form-title mb-4">Forgot your password? No problem. Just let us know your email
+                                address and we will email you a password reset link that will allow you to choose a new one.
+                            </h1>
+                            <x-auth-session-status :status="session('status')" />
+                            <form method="POST" action="{{ route('password.email') }}">
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input type="email"
+                                        class="form-control @error('email')
+                                        is-invalid
+                                    @enderror"
+                                        id="email" placeholder="Email Address" required name="email"
+                                        value="{{ old('email') }}" autocomplete="off">
+                                    <div class="invalid-feedback text-start">
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
+                                    <label for="email">Email Address</label>
+                                </div>
+                                <div class="text-center my-2">
+                                    <button class="btn btn-primary text-uppercase forgot-password-btn">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </main>
+@endsection
