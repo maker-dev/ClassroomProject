@@ -30,9 +30,9 @@
                                         id="name" placeholder="Name" required name="name"
                                         value="{{ old('name') }}" autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('name')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('name') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
                                     <label for="name">Name</label>
                                 </div>
@@ -46,10 +46,11 @@
                                         id="email" placeholder="Email Address" required name="email"
                                         value="{{ old('email') }}" autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('email')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('email') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
+
                                     <label for="email">Email Address</label>
                                 </div>
 
@@ -61,9 +62,9 @@
                                         id="password" placeholder="Password" required name="password"
                                         value="{{ old('password') }}" autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('password') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
                                     <label for="password">Password</label>
                                 </div>
@@ -77,9 +78,9 @@
                                         name="password_confirmation" value="{{ old('password_confirmation') }}"
                                         autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('password_confirmation')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('password_confirmation') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
                                     <label for="password_confirmation">Confirm Password</label>
                                 </div>

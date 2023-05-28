@@ -29,9 +29,9 @@
                                         id="email" placeholder="Email Address" required name="email"
                                         value="{{ old('email') }}" autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('email')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('email') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
                                     <label for="email">Email Address</label>
                                 </div>
@@ -43,9 +43,9 @@
                                         id="password" placeholder="Password" required name="password"
                                         value="{{ old('password') }}" autocomplete="off">
                                     <div class="invalid-feedback text-start">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
+                                        @foreach ($errors->get('password') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
                                     </div>
                                     <label for="password">Password</label>
                                 </div>
