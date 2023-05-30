@@ -1,0 +1,23 @@
+#verify-email {
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+#verify-email .backhome img {
+    width: 80px;
+    margin-bottom: 40px;
+}
+
+#verify-email .form-title {
+    line-height: 1.5625rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: 0.1px;
+    color: var(--secondary-color);
+}
+
+#verify-email .email-received {
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -5,7 +5,7 @@
 @endsection
 
 @section('stylelink')
-    <link rel="stylesheet" href="/css/pages/login.css" />
+    <link rel="stylesheet" href="/css/pages/auth/login.css" />
 @endsection
 
 @section('content')

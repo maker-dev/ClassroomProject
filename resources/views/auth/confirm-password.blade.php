@@ -1,27 +1,52 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-    </div>
+@extends('layouts.master')
 
-    <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
+@section('title')
+    ClassRoom | confirm-password
+@endsection
 
-        <!-- Password -->
-        <div>
-            <x-input-label for="password" :value="__('Password')" />
+@section('stylelink')
+    <link rel="stylesheet" href="/css/pages/auth/confirm-password.css" />
+@endsection
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+@section('content')
+    <main id='confirm-password' class='d-flex justify-content-center align-items-center'>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 m-auto">
+                    <div class="card border-0 shadow p-2 border-radius my-4">
+                        <div class="card-body text-center">
+                            <a href="{{ route('landing') }}" class="backhome">
+                                <img src="/assets/logo.png" alt="logo" />
+                            </a>
+                            <h1 class="form-title mb-4">Please confirm your
+                                password before continuing.
+                            </h1>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            <form method="POST" action="{{ route('password.confirm') }}">
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input type="password"
+                                        class="form-control @error('password')
+                                        is-invalid
+                                    @enderror"
+                                        id="password" placeholder="Password" required name="password"
+                                        value="{{ old('password') }}" autocomplete="off">
+                                    <div class="invalid-feedback text-start">
+                                        @foreach ($errors->get('password') as $error)
+                                            {{ $error }} <br>
+                                        @endforeach
+                                    </div>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary text-uppercase confirm-btn">Confirm</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="flex justify-end mt-4">
-            <x-primary-button>
-                {{ __('Confirm') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </main>
+@endsection

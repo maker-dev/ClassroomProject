@@ -5,7 +5,7 @@
 @endsection
 
 @section('stylelink')
-    <link rel="stylesheet" href="/css/pages/reset-password.css" />
+    <link rel="stylesheet" href="/css/pages/auth/reset-password.css" />
 @endsection
 
 @section('content')
