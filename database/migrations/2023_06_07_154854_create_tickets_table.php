@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("classroom_id")->constrained();
+            $table->string('subject');
+            $table->text('message');
+            $table->boolean('resolved')->default(false);
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('classroom_id');
-            $table->string('title');
-            $table->text('description');
-            $table->string('status');
-            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

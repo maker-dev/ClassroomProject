@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("classroom_id")->constrained();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string("filename");
             $table->timestamps();
-            $table->unsignedBigInteger('classroom_id');
-            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->string('file_path')->nullable();
         });
     }
 

@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class TicketResolver extends Model
 {
     use HasFactory;
 
-    public function classroom()
+    public function ticket()
     {
-        return $this->belongsTo(Classroom::class);
-    }
-
-    public function ticket_resolvers()
-    {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsTo(Ticket::class);
     }
 
     public function user()

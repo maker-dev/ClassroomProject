@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('secret_codes', function (Blueprint $table) {
+        Schema::create('teacher_remarks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("assignment_resolver_id")->constrained();
+            $table->text("remark");
+            $table->float("note");
             $table->timestamps();
-            $table->unsignedBigInteger('classroom_id');
-            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->string('code');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('secret_codes');
+        Schema::dropIfExists('teacher_remarks');
     }
 };
