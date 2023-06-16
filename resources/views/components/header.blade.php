@@ -11,6 +11,20 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto mt-lg-0 mt-2">
                 @auth
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-capitalize" href="{{ route('home') }}">
+                            Classrooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-capitalize" href="{{ route('profile.edit') }}">
+                            Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger nav-link text-white text-capitalize">Logout</button>
+                        </form>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link text-white text-capitalize" href="{{ route('login') }}"><i

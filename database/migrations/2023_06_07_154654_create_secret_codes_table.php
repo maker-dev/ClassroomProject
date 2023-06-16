@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('secret_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("classroom_id")->constrained();
+            $table->foreignId("classroom_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string("code")->unique();
             $table->timestamps();
         });

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ticket_resolvers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
-            $table->foreignId("ticket_id")->constrained();
+            $table->foreignId("user_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("ticket_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('response');
             $table->timestamps();
         });

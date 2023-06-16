@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('teacher_remarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("assignment_resolver_id")->constrained();
+            $table->foreignId("assignment_resolver_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text("remark");
             $table->float("note");
             $table->timestamps();

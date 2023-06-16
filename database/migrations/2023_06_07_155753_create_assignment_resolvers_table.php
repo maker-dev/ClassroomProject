@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('assignment_resolvers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("assignment_id")->constrained();
-            $table->foreignId("user_id")->constrained();
+            $table->foreignId("assignment_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("user_id")->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string("filename");
             $table->timestamps();
         });

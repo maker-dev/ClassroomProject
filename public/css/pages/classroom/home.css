@@ -1,0 +1,25 @@
+.classroomImage {
+    height: 230px;
+}
+
+.ls-1 {
+    letter-spacing: 1px;
+    font-size: 22px;
+}
+
+.min-height-100 {
+    min-height: 100vh;
+}
+
+#classroomFooter {
+    background-color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+#classroomFooter > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 8px 5px;
+}
