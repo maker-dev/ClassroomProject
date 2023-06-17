@@ -33,4 +33,10 @@ class Classroom extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function scopeMyClassrooms($query, $userId)
+    {
+        return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
+            ->where('classroom_user.user_id', $userId)->paginate(6);
+    }
 }

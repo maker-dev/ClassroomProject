@@ -1,7 +1,9 @@
-.classroomImage {
-    height: 230px;
+/* header */
+header {
+    margin-bottom: 50px
 }
 
+/* utilities classes */
 .ls-1 {
     letter-spacing: 1px;
     font-size: 22px;
@@ -9,6 +11,26 @@
 
 .min-height-100 {
     min-height: 100vh;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+/* contents */
+#classroom-cards {
+    min-height: calc(100vh - (102px + 56px + 100px));
+}
+
+.classroomImage {
+    height: 230px;
+}
+
+
+/* footer */
+
+footer {
+    margin-top: 50px;
 }
 
 #classroomFooter {

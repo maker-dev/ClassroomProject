@@ -9,6 +9,7 @@ class ClassroomController extends Controller
 {
     public function home()
     {
-        return view("classroom.home");
+        $classrooms = Classroom::myClassrooms(auth()->id());
+        return view("classroom.home", compact("classrooms"));
     }
 }
