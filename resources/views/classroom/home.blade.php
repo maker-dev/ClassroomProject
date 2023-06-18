@@ -36,7 +36,7 @@
             <p class="text-white">CopyRight © 2023, All Rights reserved</p>
             <div>
                 <a class="btn btn-info me-2" href="#">Join</a>
-                <a class="btn btn-success " href="#">Create</a>
+                <a class="btn btn-success " href="{{ route('classroom.create') }}">Create</a>
             </div>
         </div>
     </footer>

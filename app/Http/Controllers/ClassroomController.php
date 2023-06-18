@@ -12,4 +12,8 @@ class ClassroomController extends Controller
         $classrooms = Classroom::myClassrooms(auth()->id());
         return view("classroom.home", compact("classrooms"));
     }
+    public function create()
+    {
+        return view("classroom.create");
+    }
 }

@@ -1,0 +1,73 @@
+.custom__form input {
+    opacity: 0;
+    height: 0;
+}
+
+.custom__image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.custom__image-container label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.custom__image-container img {
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.save{
+    color: white !important;
+    background-color: var(--primary-color) !important;
+    padding: 5px 20px !important;
+    border-radius: 10px;
+}
+.edit-section{
+    background:none !important;
+    margin-top: 20px !important;
+    margin-bottom: 70px !important;
+}
+div{
+    background: none !important;
+}
+input{
+    background: none !important;
+    color: black !important;
+}
+input:focus{
+    border-color: var(--secondary-color) !important;
+}
+.section-title{
+    color: black;
+    font-size: 2em;
+}
+.label{
+    color: black !important;
+}
+.confirm-form{
+    background-color: var(--primary-color);
+    padding: 20px;
+}
+.confirm-title{
+    color: white;
+    font-size: 2em;
+}
+.cancel-deletion{
+    background-color: var(--secondary-color);
+    padding: 6px 20px;
+    border-radius: 10px;
+    color:white
+}

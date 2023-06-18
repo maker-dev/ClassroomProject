@@ -1,4 +1,16 @@
-<x-app-layout>
+@extends('layouts.master')
+
+@section('title')
+ClassRoom | Profile 
+@endsection
+
+@section('stylelink')
+<link rel="stylesheet" href="{{ asset('css/pages/classroom/profile.css') }}">
+@endsection
+
+@section('content')
+@include('components.header')
+<div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
@@ -26,4 +38,5 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
