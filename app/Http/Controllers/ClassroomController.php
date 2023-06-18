@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\SecretCode;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -22,6 +24,18 @@ class ClassroomController extends Controller
         $request->validate([
             "secret_code" => "required|exists:secret_codes,code"
         ]);
-        return $request;
+        $secret_code = SecretCode::where("code", $request->secret_code)->get()[0];
+        $classroom   = $secret_code->classroom;
+        //validate if user is already in this classroom
+        foreach ($secret_code->classroom->users as $user) {
+            if ($user->id == auth()->id()) {
+                return redirect()->route("home");
+            }
+        }
+        //attach user to classroom
+        $currUser = User::find(auth()->id());
+        $currUser->classrooms()->attach($classroom, ["role" => "student"]);
+
+        return redirect()->route("home");
     }
 }
