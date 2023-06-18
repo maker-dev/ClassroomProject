@@ -63,10 +63,10 @@ ClassRoom | Create classroom
                             </div>
 
                             <div>
-                                <x-input-label class="label" for="cober-image" :value="__('cover-image')" />
+                                <x-input-label class="label" for="cover_image" :value="__('Cover image')" />
                                 <div class="custom__image-container">
                                     <label id="add-img-label" for="add-single-img">+</label>
-                                    <input hidden type="file" id="add-single-img" accept="image/jpeg" />
+                                    <input name="cover_image" hidden type="file" id="add-single-img" accept="image/jpeg" />
                                 </div>
                             </div>
 
