@@ -34,10 +34,16 @@
     <footer id="classroomFooter">
         <div class="container">
             <p class="text-white">CopyRight © 2023, All Rights reserved</p>
-            <div>
-                <a class="btn btn-info me-2" href="#">Join</a>
+            <form action="{{ route('classroom.join') }}" method="POST">
+                @csrf
                 <a class="btn btn-success " href="{{ route('classroom.create') }}">Create</a>
-            </div>
+                <input type="text" placeholder="Enter Code"
+                    class="joinInput @error('secret_code')
+                                        invalid
+                                    @enderror"
+                    name="secret_code" autocomplete="off" />
+                <button class="btn btn-info me-2" href="#">Join</button>
+            </form>
         </div>
     </footer>
 @endsection

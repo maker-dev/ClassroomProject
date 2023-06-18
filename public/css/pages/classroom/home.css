@@ -17,6 +17,11 @@ header {
     font-weight: 500;
 }
 
+.invalid {
+    border-color: red !important;
+    box-shadow: 0 0 0 0.15rem rgba(236, 28, 28, 0.829) !important;
+}
+
 /* contents */
 #classroom-cards {
     min-height: calc(100vh - (102px + 56px + 100px));
@@ -44,4 +49,21 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     padding: 8px 5px;
+}
+
+.joinInput {
+    width: 120px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

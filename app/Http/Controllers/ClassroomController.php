@@ -16,4 +16,12 @@ class ClassroomController extends Controller
     {
         return view("classroom.create");
     }
+
+    public function join(Request $request)
+    {
+        $request->validate([
+            "secret_code" => "required|exists:secret_codes,code"
+        ]);
+        return $request;
+    }
 }
