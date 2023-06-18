@@ -11,12 +11,12 @@ const addImgHandler = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      const newImg = document.createElement("img");
-      newImg.src = reader.result;
-      imgContainer.innerHTML= `<label id="add-img-label" for="add-single-img">+</label>
-      <input hidden type="file" id="add-single-img" accept="image/jpeg" />`;
-      imgContainer.appendChild(newImg);
+        const newImg = document.createElement("img");
+        newImg.src = reader.result;
+        imgContainer.innerHTML= `<label id="add-img-label" for="add-single-img">+</label>
+        <input hidden type="file" id="add-single-img" accept="image/jpeg" />`;
+        imgContainer.appendChild(newImg);
     };
     return;
-  };
-  imgInputHelper.addEventListener("change", addImgHandler);
+};
+imgInputHelper.addEventListener("change", addImgHandler);

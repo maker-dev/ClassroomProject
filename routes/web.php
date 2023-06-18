@@ -16,16 +16,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//landing page
 Route::get('/', LandingController::class)->middleware("guest")->name("landing");
 
-Route::get('/home', [ClassroomController::class, "home"])->middleware(['auth', 'verified'])->name('home');
+//classroom
+Route::controller(ClassroomController::class)->group(function () {
+    Route::get('/home', "home")->middleware(['auth', 'verified'])->name('home');
+    Route::get('/classroom/create', 'create')->middleware("auth")->name('classroom.create');
+});
 
+//profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/create', [ClassroomController::class, 'create'])->name('classroom.create');
 });
 
+//auth
 require __DIR__ . '/auth.php';
