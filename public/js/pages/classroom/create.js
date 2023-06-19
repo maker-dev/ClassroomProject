@@ -1,7 +1,5 @@
-const imgInputHelper = document.getElementById("add-single-img");
-const imgInputHelperLabel = document.getElementById("add-img-label");
+let imgInputHelper = document.getElementById("add-single-img");
 const imgContainer = document.querySelector(".custom__image-container");
-const imgFiles = [];
 
 
 const addImgHandler = () => {
@@ -13,8 +11,7 @@ const addImgHandler = () => {
     reader.onload = () => {
         const newImg = document.createElement("img");
         newImg.src = reader.result;
-        imgContainer.innerHTML= `<label id="add-img-label" for="add-single-img">+</label>
-        <input hidden type="file" id="add-single-img" accept="image/jpeg" />`;
+        (document.querySelector(".custom__image-container img"))?imgContainer.removeChild(document.querySelector(".custom__image-container img")):undefined;
         imgContainer.appendChild(newImg);
     };
     return;
