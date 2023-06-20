@@ -9,6 +9,8 @@ class Classroom extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["name", "subject", "description", "cover_image"];
+
     public function secret_code()
     {
         return $this->hasOne(SecretCode::class);

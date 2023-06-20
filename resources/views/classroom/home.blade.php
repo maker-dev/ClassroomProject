@@ -16,7 +16,8 @@
                 @foreach ($classrooms as $classroom)
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card shadow border rounded my-2">
-                            <img src="/assets/imagePlaceholder.png" class="card-img-top classroomImage" alt="classroom image">
+                            <img src="@if ($classroom->cover_image) /storage/cover_images/{{ $classroom->cover_image }} @else /assets/imagePlaceholder.png @endif"
+                                class="card-img-top classroomImage" alt="classroom image">
                             <div class="card-body">
                                 <h5 class="card-title text-capitalize ls-1 fw-500">{{ $classroom->name }}</h5>
                                 <p class="card-text text-secondary">-{{ $classroom->subject }}</p>

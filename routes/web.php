@@ -23,6 +23,7 @@ Route::get('/', LandingController::class)->middleware("guest")->name("landing");
 Route::controller(ClassroomController::class)->group(function () {
     Route::get('/home', "home")->middleware(['auth', 'verified'])->name('home');
     Route::get('/classroom/create', 'create')->middleware("auth")->name('classroom.create');
+    Route::post("/classroom", "store")->middleware("auth")->name("classroom.store");
     Route::post("/classroom/join", "join")->middleware("auth")->name("classroom.join");
 });
 
