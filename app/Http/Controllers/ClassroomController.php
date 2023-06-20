@@ -73,24 +73,6 @@ class ClassroomController extends Controller
 
         return redirect()->route("home");
     }
-    public function lessons(string $id)
-    {
-        $classroom = Classroom::findOrFail($id);
-        Gate::authorize("view", $classroom);
-        return view("classroom.lessons", compact("classroom"));
-    }
-    public function tickets(string $id)
-    {
-        $classroom = Classroom::findOrFail($id);
-        Gate::authorize("view", $classroom);
-        return view("classroom.tickets", compact("classroom"));
-    }
-    public function homeworks(string $id)
-    {
-        $classroom = Classroom::findOrFail($id);
-        Gate::authorize("view", $classroom);
-        return view("classroom.homeworks", compact("classroom"));
-    }
 
     public function join(Request $request)
     {
@@ -116,10 +98,8 @@ class ClassroomController extends Controller
     public function show(string $id)
     {
         $classroom = Classroom::findOrFail($id);
-        $secretcode = SecretCode::findOrFail($id);
-
         Gate::authorize("view", $classroom);
-        return view("classroom.show", compact("classroom", "secretcode"));
+        return view("classroom.show", compact("classroom"));
     }
 
     public function edit(string $id)

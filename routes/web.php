@@ -27,10 +27,6 @@ Route::controller(ClassroomController::class)->group(function () {
     Route::post("/classroom/join", "join")->middleware("auth")->name("classroom.join");
     Route::get("/classroom/{id}", "show")->middleware("auth")->name("classroom.show");
     Route::get("/classroom/{id}/edit", "edit")->middleware("auth")->name("classroom.edit");
-    Route::get("/classroom/{id}/lessons", "lessons")->middleware("auth")->name("classroom.lessons");
-    Route::get("/classroom/{id}/tickets", "tickets")->middleware("auth")->name("classroom.tickets");
-    Route::get("/classroom/{id}/homeworks", "homeworks")->middleware("auth")->name("classroom.homeworks");
-
     Route::put("/classroom/{id}", "update")->middleware("auth")->name("classroom.update");
     Route::delete("/classroom/{id}", "destroy")->middleware(["auth", "password.confirm"])->name("classroom.destroy");
 });
