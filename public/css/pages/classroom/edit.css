@@ -33,47 +33,57 @@ header {
     border-radius: 5px;
     object-fit: cover;
 }
-.save{
+
+.save {
     color: white !important;
     background-color: var(--primary-color) !important;
     padding: 5px 20px !important;
     border-radius: 10px;
 }
-.edit-section{
-    background:none !important;
+
+.edit-section {
+    background: none !important;
     margin-top: 20px !important;
     margin-bottom: 70px !important;
 }
-div{
+
+div {
     background: none !important;
 }
-input{
+
+input {
     background: none !important;
     color: black !important;
 }
-input:focus{
+
+input:focus {
     border-color: var(--secondary-color) !important;
 }
-.section-title{
+
+.section-title {
     color: black;
     font-size: 2em;
 }
-.label{
+
+.label {
     color: black !important;
 }
-.confirm-form{
+
+.confirm-form {
     background-color: var(--primary-color);
     padding: 20px;
 }
-.confirm-title{
+
+.confirm-title {
     color: white;
     font-size: 2em;
 }
-.cancel-deletion{
+
+.cancel-deletion {
     background-color: var(--secondary-color);
     padding: 6px 20px;
     border-radius: 10px;
-    color:white
+    color: white
 }
 
 

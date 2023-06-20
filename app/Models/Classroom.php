@@ -41,4 +41,10 @@ class Classroom extends Model
         return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
             ->where('classroom_user.user_id', $userId)->paginate(6);
     }
+
+    public function scopeIsTeacher($query, $userId)
+    {
+        return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
+            ->where('classroom_user.user_id', $userId)->where("classroom_user.role", "teacher")->exists();
+    }
 }

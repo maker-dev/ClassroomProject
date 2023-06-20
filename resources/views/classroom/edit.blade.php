@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    ClassRoom | create classroom
+    ClassRoom | edit classroom
 @endsection
 
 @section('stylelink')
-    <link rel="stylesheet" href="{{ asset('css/pages/classroom/create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/classroom/edit.css') }}">
 @endsection
 
 @section('scriptlink')
-    <script src="{{ asset('js/pages/classroom/create.js') }}"></script>
+    <script src="{{ asset('js/pages/classroom/edit.js') }}"></script>
 @endsection
 
 @section('content')
@@ -17,10 +17,12 @@
     <section id="add-classroom">
         <div class="container">
             <div class="shadow rounded p-4">
-                <h1 class="text-primary">Create Classroom</h1>
-                <p class="text-muted mb-4">Fill in your classroom info.</p>
-                <form action="{{ route('classroom.store') }}" method="POST" enctype="multipart/form-data">
+                <h1 class="text-info">Edit Classroom</h1>
+                <p class="text-muted mb-4">Fill in your new classroom info.</p>
+                <form action="{{ route('classroom.update', ['id' => $classroom->id]) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     {{-- name --}}
                     <label for="name" class="my-2 my-2 text-capitalize"><span
                             class="text-secondary">*</span>Name</label>
@@ -28,7 +30,7 @@
                         class="form-control @error('name')
                                         is-invalid
                                     @enderror"
-                        id="name" placeholder="Enter Name" value="{{ old('name') }}" required autocomplete="off"
+                        id="name" placeholder="Enter Name" value="{{ $classroom->name }}" required autocomplete="off"
                         name="name">
                     <div class="invalid-feedback text-start">
                         @foreach ($errors->get('name') as $error)
@@ -42,8 +44,8 @@
                         class="form-control @error('subject')
                                         is-invalid
                                     @enderror"
-                        id="subject" placeholder="Enter subject" value="{{ old('subject') }}" required autocomplete="off"
-                        name="subject">
+                        id="subject" placeholder="Enter subject" value="{{ $classroom->subject }}" required
+                        autocomplete="off" name="subject">
                     <div class="invalid-feedback text-start">
                         @foreach ($errors->get('subject') as $error)
                             {{ $error }} <br>
@@ -56,7 +58,7 @@
                         class="form-control @error('subject')
                                         is-invalid
                                     @enderror"
-                        name="description" placeholder="Enter Description">{{ old('description') }}</textarea>
+                        name="description" placeholder="Enter Description">{{ $classroom->description }}</textarea>
                     <div class="invalid-feedback text-start">
                         @foreach ($errors->get('description') as $error)
                             {{ $error }} <br>
@@ -75,10 +77,8 @@
                             {{ $error }} <br>
                         @endforeach
                     </div>
-                    <button class="btn btn-success mt-3">Create</button>
+                    <button class="btn btn-success mt-3">Edit</button>
             </div>
-
-
             </form>
         </div>
         </div>

@@ -17,7 +17,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white text-capitalize" href="{{ route('profile.edit') }}">
-                            Profile</a>
+                            {{ auth()->user()->name }}</a>
                     </li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">

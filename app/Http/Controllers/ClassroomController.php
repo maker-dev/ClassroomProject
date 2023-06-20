@@ -6,6 +6,8 @@ use App\Models\Classroom;
 use App\Models\SecretCode;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class ClassroomController extends Controller
 {
@@ -28,7 +30,7 @@ class ClassroomController extends Controller
             'cover_image' => 'bail|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         //current user
-        $user = User::find(auth()->id());
+        $user = User::findOrFail(auth()->id());
         //storing file
         if ($request->exists("cover_image")) {
             //storing image
@@ -82,7 +84,7 @@ class ClassroomController extends Controller
         //validate if user is already in this classroom
         foreach ($classroom->users as $user) {
             if ($user->id == auth()->id()) {
-                return redirect()->route("home");
+                return redirect()->route("classroom.show", ['id' => $classroom->id]);
             }
         }
 
@@ -90,6 +92,68 @@ class ClassroomController extends Controller
         $currUser = User::find(auth()->id());
         $currUser->classrooms()->attach($classroom, ["role" => "student"]);
 
+        return redirect()->route("home");
+    }
+
+    public function show(string $id)
+    {
+        $classroom = Classroom::findOrFail($id);
+        Gate::authorize("view", $classroom);
+        return view("classroom.show", compact("classroom"));
+    }
+
+    public function edit(string $id)
+    {
+        $classroom = Classroom::findOrFail($id);
+        Gate::authorize("update", $classroom);
+        return view("classroom.edit", compact("classroom"));
+    }
+
+    public function update(string $id, Request $request)
+    {
+        $classroom = Classroom::findOrFail($id);
+
+        Gate::authorize("update", $classroom);
+
+        $request->validate([
+            'name' => 'bail|required|string|max:20',
+            'description' => 'bail|required|string',
+            'subject' => 'bail|required|string|max:20',
+            'cover_image' => 'bail|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        //find classroom
+
+        if ($request->exists("cover_image")) {
+
+            if (Storage::exists("/public/cover_images/{$classroom->cover_image}")) {
+                Storage::delete("/public/cover_images/{$classroom->cover_image}");
+            }
+            $image = $request->file("cover_image");
+            $image_name = $image->hashName();
+            $image->storeAs("/public/cover_images", $image_name);
+            $classroom->update([
+                "name" => $request->name,
+                "description" => $request->description,
+                "subject" => $request->subject,
+                "cover_image" => $image_name
+            ]);
+        } else {
+            $classroom->update($request->all());
+        }
+
+        return redirect()->route("home");
+    }
+
+    public function destroy(string $id)
+    {
+        $classroom  = Classroom::findOrFail($id);
+        Gate::authorize("update", $classroom);
+        $image_path = "/public/cover_images/{$classroom->cover_image}";
+        if (Storage::exists("/public/cover_images/{$classroom->cover_image}")) {
+            Storage::delete($image_path);
+        };
+        $classroom->delete();
         return redirect()->route("home");
     }
 }
