@@ -15,7 +15,7 @@
             <ul>
                 <li><a class="active" href="{{ route('classroom.show', ['id' => $classroom->id]) }}">Overview</a></li>
                 <li><a href="{{ route('lesson.index', ['id' => $classroom->id]) }}">Lessons</a></li>
-                <li><a href="#">Homeworks</a></li>
+                <li><a href="{{ route('homework.index', ['id' => $classroom->id]) }}">Homeworks</a></li>
                 <li><a href="{{ route('classroom.peoples', ['id' => $classroom->id]) }}">Peoples</a></li>
             </ul>
         </div>

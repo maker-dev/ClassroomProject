@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\LandingController;
@@ -53,6 +54,14 @@ Route::controller(LessonController::class)->group(function () {
     Route::get("/classroom/{id}/lessons/create", "create")->middleware('auth')->name('lesson.create');
     Route::post("/classroom/{id}/lessons/create", "store")->middleware('auth')->name('lesson.store');
     Route::post("/lesson/{id}", "download")->middleware("auth")->name("lesson.download");
+});
+
+//homework
+Route::controller(HomeworkController::class)->group(function () {
+    Route::get('/classroom/{id}/homeworks', 'index')->middleware('auth')->name('homework.index');
+    Route::get("/classroom/{id}/homeworks/create", "create")->middleware('auth')->name('homework.create');
+    Route::post("/classroom/{id}/homeworks/create", "store")->middleware('auth')->name('homework.store');
+    Route::post("/homework/{id}", "download")->middleware("auth")->name("homework.download");
 });
 
 //auth

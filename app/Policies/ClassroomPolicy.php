@@ -37,7 +37,11 @@ class ClassroomPolicy
     {
         return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
-
+    
+    public function createAssignment(User $user, Classroom $classroom)
+    {
+        return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
+    }
     /**
      * Determine whether the user can update the model.
      */

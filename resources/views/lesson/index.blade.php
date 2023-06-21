@@ -3,9 +3,7 @@
 @section('title')
     ClassRoom | {{ $classroom->name }}
 @endsection
-@section('scriptlink')
 
-@endsection
 @section('stylelink')
     <link rel="stylesheet" href="{{ asset('css/pages/lesson/index.css') }}">
 @endsection
@@ -16,7 +14,7 @@
         <ul>
             <li><a href="{{ route('classroom.show', ['id' => $classroom->id]) }}">Overview</a></li>
             <li><a class="active" href="{{ route('lesson.index', ['id' => $classroom->id]) }}">Lessons</a></li>
-            <li><a href="#">Homeworks</a></li>
+            <li><a href="{{ route('homework.index', ['id' => $classroom->id]) }}">Homeworks</a></li>
             <li><a href="{{ route('classroom.peoples', ['id' => $classroom->id]) }}">Peoples</a></li>
         </ul>
     </div>
@@ -35,6 +33,7 @@
                             <h2 class="text-primary">{{ $lesson->title }}</h2>
                             <p class="text-secondary">{{ $lesson->description }}</p>
                             <div class="d-flex justify-content-between flex-wrap">
+                                
                                 <p class="date">Posted on
                                     {{ date('F d, Y', strtotime($lesson->created_at)) }}</p>
                                 <form action="{{ route('lesson.download', ['id' => $lesson->id]) }}" method="POST">
