@@ -3,9 +3,7 @@
 @section('title')
     ClassRoom | {{ $classroom->name }}
 @endsection
-@section('scriptlink')
 
-@endsection
 @section('stylelink')
     <link rel="stylesheet" href="{{ asset('css/pages/lesson/index.css') }}">
 @endsection

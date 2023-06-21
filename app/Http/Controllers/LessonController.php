@@ -26,35 +26,37 @@ class LessonController extends Controller
         return view("lesson.create", compact("classroom"));
     }
 
-    public function store(Request $request, string $id)
-    {
-        $classroom = Classroom::findOrFail($id);
-        Gate::authorize("createLesson", $classroom);
-        $request->validate([
-            'title' => 'bail|required|string|max:20',
-            'description' => 'bail|required|string',
-            'filename' => 'bail|required|file',
-        ]);
+public function store(Request $request, string $id)
+{
+    $classroom = Classroom::findOrFail($id);
+    Gate::authorize("createLesson", $classroom);
+    $request->validate([
+        'title' => 'bail|required|string|max:20',
+        'description' => 'bail|required|string',
+        'filename' => 'bail|required|file',
+    ]);
 
-        //storing file
-        $file = $request->file("filename");
-        $file_name = $file->hashName();
-        $file->storeAs("/public/lessons", $file_name);
-        //storing data
-        $classroom->lessons()->create([
-            "title" => $request->title,
-            "description" => $request->description,
-            "filename"    => $file_name
-        ]);
+    // Storing file
+    $file = $request->file("filename");
+    $file_extension = $file->getClientOriginalExtension();
+    $file_name = $file->hashName().'.'.$file_extension;
+    $file->storeAs("public/lessons", $file_name);
 
-        return redirect()->route("lesson.index", ['id' => $classroom->id]);
-    }
+    // Storing data
+    $classroom->lessons()->create([
+        "title" => $request->title,
+        "description" => $request->description,
+        "filename"    => $file_name
+    ]);
 
-    public function download(string $id)
-    {
-        $lesson    = Lesson::find($id);
-        $filePath  = "public/lessons/{$lesson->filename}";
-        $filename  = $lesson->title;
-        return Storage::download($filePath, $filename);
-    }
+    return redirect()->route("lesson.index", ['id' => $classroom->id]);
+}
+
+public function download(string $id)
+{
+    $lesson = Lesson::find($id);
+    $filePath = "public/lessons/{$lesson->filename}";
+    $filename = $lesson->title . '.' . pathinfo($filePath, PATHINFO_EXTENSION);
+    return Storage::download($filePath, $filename);
+}
 }
