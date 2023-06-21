@@ -21,7 +21,8 @@
     <div class="container">
         @if ($classroom->IsTeacher(auth()->id()))
             <div class="text-end mb-3">
-                <a href="{{ route('homework.create', ['id' => $classroom->id]) }}" class="btn btn-success">Add Assignment</a>
+                <a href="{{ route('homework.create', ['id' => $classroom->id]) }}" class="btn btn-success">Add
+                    Assignment</a>
             </div>
         @endif
 
@@ -33,7 +34,7 @@
                             <h2 class="text-primary">{{ $assignment->title }}</h2>
                             <p class="text-secondary">{{ $assignment->description }}</p>
                             <p class="deadline">Deadline:
-                                    {{ date('F d, Y', strtotime($assignment->deadline)) }}</p>
+                                {{ date('F d, Y', strtotime($assignment->deadline)) }}</p>
                             <div class="d-flex justify-content-between flex-wrap">
                                 <p class="date">Posted on
                                     {{ date('F d, Y', strtotime($assignment->created_at)) }}</p>

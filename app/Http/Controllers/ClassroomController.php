@@ -193,6 +193,12 @@ class ClassroomController extends Controller
                 Storage::delete($file_path);
             };
         }
+        foreach ($classroom->assignments as $assignment) {
+            $file_path = "public/assignments/{$assignment->filename}";
+            if (Storage::exists($file_path)) {
+                Storage::delete($file_path);
+            };
+        }
         $classroom->delete();
         return redirect()->route("home");
     }
