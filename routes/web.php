@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
@@ -36,6 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+//lesson
+Route::controller(LessonController::class)->group(function () {
+    Route::get('/classroom/{id}/lessons', 'show')->middleware('auth')->name('classroom.lessons');
 });
 
 //auth

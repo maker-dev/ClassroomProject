@@ -47,4 +47,9 @@ class Classroom extends Model
         return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
             ->where('classroom_user.user_id', $userId)->where("classroom_user.role", "teacher")->exists();
     }
+    public function teacher()
+    {
+        return $this->belongsToMany(User::class, 'classroom_user')
+            ->wherePivot('role', 'teacher');
+    }
 }

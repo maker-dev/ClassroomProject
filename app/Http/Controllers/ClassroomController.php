@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Classroom;
 use App\Models\SecretCode;
 use App\Models\User;

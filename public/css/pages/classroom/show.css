@@ -1,183 +1,286 @@
-  .classroom-navbar {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 10px;
-  }
+.classroom-navbar {
+  background-color: var(--primary-color);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  .classroom-navbar ul {
-    list-style-type: none;
-    display: flex;
-  }
+.classroom-navbar ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 
-  .classroom-navbar li {
-    margin-right: 10px;
-  }
+}
 
-  .classroom-navbar li:last-child {
-    margin-right: 0;
-  }
+.classroom-navbar li {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
 
-  .classroom-navbar a {
-    text-decoration: none;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
 
-  .classroom-navbar a:hover, .active {
-    background-color: #555;
-  }
+.classroom-navbar li:last-child {
+  margin-right: 0;
+}
 
-  .classroom {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
+.classroom-navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
 
-  .classroom-header {
-    position: relative;
-    margin-bottom: 20px;
-    width: 100%;
-    padding-top: 25%;
-    overflow: hidden;
-  }
+.classroom-navbar a:hover,
+.active {
+  background-color: #555;
+}
 
-  .classroom-header img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
+.classroom {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-  .classroom-header .class-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-  }
+.classroom-header {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-top: 25%;
+  overflow: hidden;
+}
 
+.classroom-header img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.classroom-header .class-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+}
+
+.classroom-header .class-info h1 {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.classroom-header .class-info p {
+  font-size: 1.5em;
+}
+
+.content {
+  display: flex;
+}
+
+.posts {
+  flex: 3;
+  padding-right: 20px;
+}
+
+.homeworks {
+  flex: 1;
+}
+
+.post-list {
+  list-style-type: none;
+}
+
+.post {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.post h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.post .date {
+  font-size: 14px;
+  color: #999;
+}
+
+.homeworks-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.homeworks-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.homeworks-container .homework-item {
+  margin-bottom: 10px;
+}
+
+.homeworks-container .homework-item h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+}
+
+.homeworks-container .homework-item p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.homeworks-container .due-date {
+  font-size: 14px;
+  color: #999;
+}
+
+.homework-separator {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-button button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button button:hover {
+  background-color: #45a049;
+}
+
+.view-more-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--secondary-color);
+}
+
+.classroom-code-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  
+}
+
+.classroom-code-container p {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  margin-right: 5px;
+  height: 100%;
+}
+
+.classroom-code-container button {
+  padding: 5px 10px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.classroom-code-container button:hover {
+  background-color: rgb(38, 114, 151);
+}
+
+
+/* classroom details */
+.classroom-details {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.classroom-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0;
+  color: #333;
+}
+
+.classroom-teacher,
+.classroom-subject {
+  font-size: 20px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.classroom-description {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 700px) {
   .classroom-header .class-info h1 {
-    font-size: 3em;
+    font-size: 7vw;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
   }
 
   .classroom-header .class-info p {
-    font-size: 1.5em;
+    font-size: 3vw;
   }
-
-  .content {
-    display: flex;
-  }
-
-  .posts {
-    flex: 3;
-    padding-right: 20px;
-  }
-
-  .homeworks {
-    flex: 1;
-  }
-
-  .post-list {
-    list-style-type: none;
-  }
-
-  .post {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-  }
-
-  .post h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .post p {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 5px;
-  }
-
-  .post .date {
-    font-size: 14px;
-    color: #999;
-  }
-
-  .homeworks-container {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-  }
-
-  .homeworks-container h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #555;
-  }
-
-  .homeworks-container .homework-item {
-    margin-bottom: 10px;
-  }
-
-  .homeworks-container .homework-item h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-    color: #007bff;
-  }
-
-  .homeworks-container .homework-item p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 5px;
-  }
-
-  .homeworks-container .due-date {
-    font-size: 14px;
-    color: #999;
-  }
-
-  .homework-separator {
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .add-button {
-    margin-top: 20px;
-  }
-
-  .add-button button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+  .classroom-header .class-info {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
   }
-
-  .add-button button:hover {
-    background-color: #45a049;
-  }
-
-  .view-more-link {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 18px;
-    color: #007bff;
-  }
-
   .classroom-code-container {
     position: absolute;
     bottom: 10px;
@@ -188,23 +291,21 @@
     display: flex;
     align-items: center;
   }
-
   .classroom-code-container p {
-    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    font-size: 2vw;
     margin-right: 5px;
+    height: 100%;
   }
-
   .classroom-code-container button {
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: var(--secondary-color);
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 2vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
-  .classroom-code-container button:hover {
-    background-color: #0056b3;
-  }
+}
