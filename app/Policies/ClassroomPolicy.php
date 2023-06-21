@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Assignment;
 use App\Models\Classroom;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
@@ -37,7 +38,7 @@ class ClassroomPolicy
     {
         return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
-    
+
     public function createAssignment(User $user, Classroom $classroom)
     {
         return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
@@ -68,6 +69,11 @@ class ClassroomPolicy
         return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
 
+    public function uploadAssignment(User $user, Classroom $classroom, Assignment $assignment)
+    {
+
+        return $user->classrooms()->where('role', 'student')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists() && $assignment->deadline >= now() && !$assignment->assignment_resolvers()->exists();
+    }
     /**
      * Determine whether the user can restore the model.
      */

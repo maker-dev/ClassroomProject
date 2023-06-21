@@ -18,4 +18,9 @@ class Assignment extends Model
     {
         return $this->hasMany(AssignmentResolver::class);
     }
+
+    public function scopeAssignmentResolved($query, $assignment_id)
+    {
+        return $this->join("assignment_resolvers", "assignments.id", "=", "assignment_resolvers.assignment_id")->where("assignments.id", $assignment_id)->exists();
+    }
 }

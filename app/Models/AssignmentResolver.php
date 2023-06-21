@@ -9,6 +9,7 @@ class AssignmentResolver extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["filename", "user_id", "assignment_id"];
     public function assignment()
     {
         return $this->belongsTo(Assignment::class);

@@ -33,7 +33,7 @@
                             <h2 class="text-primary">{{ $lesson->title }}</h2>
                             <p class="text-secondary">{{ $lesson->description }}</p>
                             <div class="d-flex justify-content-between flex-wrap">
-                                
+
                                 <p class="date">Posted on
                                     {{ date('F d, Y', strtotime($lesson->created_at)) }}</p>
                                 <form action="{{ route('lesson.download', ['id' => $lesson->id]) }}" method="POST">

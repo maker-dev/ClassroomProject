@@ -5,7 +5,7 @@
 @endsection
 
 @section('stylelink')
-    <link rel="stylesheet" href="{{ asset('css/pages/lesson/create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/assignment/create.css') }}">
 @endsection
 
 
@@ -47,8 +47,7 @@
                         @endforeach
                     </div>
                     {{-- deadline --}}
-                    <label for="deadline" class="my-2 text-capitalize"><span
-                            class="text-secondary">*</span>deadline</label>
+                    <label for="deadline" class="my-2 text-capitalize"><span class="text-secondary">*</span>deadline</label>
                     <input type="date" name="deadline" id="deadline"
                         class="form-control @error('deadline')
                                         is-invalid

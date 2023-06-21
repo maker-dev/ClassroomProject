@@ -5,7 +5,7 @@
 @endsection
 
 @section('stylelink')
-    <link rel="stylesheet" href="{{ asset('css/pages/lesson/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/assignment/index.css') }}">
 @endsection
 
 @section('content')
@@ -40,6 +40,17 @@
                                     {{ date('F d, Y', strtotime($assignment->created_at)) }}</p>
                                 <form action="{{ route('homework.download', ['id' => $assignment->id]) }}" method="POST">
                                     @csrf
+
+                                    @if (!$classroom->IsTeacher(auth()->id()))
+                                        @if (!$assignment->AssignmentResolved($assignment->id) && $assignment->deadline >= now())
+                                            <a href="{{ route('homework.show', ['classroom_id' => $classroom->id, 'assignment_id' => $assignment->id]) }}"
+                                                class="btn btn-warning">More</a>
+                                        @elseif ($assignment->AssignmentResolved($assignment->id))
+                                            <i class="fa-solid fa-check text-success mx-2 h3"></i>
+                                        @elseif($assignment->deadline <= now())
+                                            <i class="fa-solid fa-ban mx-2 h3"></i>
+                                        @endif
+                                    @endif
                                     <button class="btn btn-info">Download</button>
                                 </form>
                             </div>

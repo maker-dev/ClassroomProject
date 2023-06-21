@@ -61,6 +61,8 @@ Route::controller(HomeworkController::class)->group(function () {
     Route::get('/classroom/{id}/homeworks', 'index')->middleware('auth')->name('homework.index');
     Route::get("/classroom/{id}/homeworks/create", "create")->middleware('auth')->name('homework.create');
     Route::post("/classroom/{id}/homeworks/create", "store")->middleware('auth')->name('homework.store');
+    Route::get("/classroom/{classroom_id}/homeworks/{assignment_id}", "show")->middleware('auth')->name('homework.show');
+    Route::post("/classroom/{classroom_id}/homeworks/{assignment_id}", "submitwork")->middleware('auth')->name('homework.submitwork');
     Route::post("/homework/{id}", "download")->middleware("auth")->name("homework.download");
 });
 
