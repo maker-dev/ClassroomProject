@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('active')->default(true);
             $table->string('cover_image')->nullable();
+            $table->string('background_image');
             $table->timestamps();
         });
     }

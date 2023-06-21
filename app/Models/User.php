@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class);
+        return $this->belongsToMany(Classroom::class)->withPivot("role");
     }
 
     public function assignment_resolver()
@@ -63,5 +63,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ticket_resolver()
     {
         return $this->hasOne(TicketResolver::class);
+    }
+
+    public function scopeClassroom($query, $classroom_id)
+    {
+        return $query->join('classroom_user', 'users.id', '=', 'classroom_user.user_id')
+            ->where("classroom_id", $classroom_id)->get()[0];
     }
 }

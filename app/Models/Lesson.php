@@ -9,6 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["title", "description", "filename"];
+
     public function classroom()
     {
         return $this->belongsTo(Classroom::class);

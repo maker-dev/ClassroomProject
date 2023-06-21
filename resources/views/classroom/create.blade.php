@@ -63,7 +63,7 @@
                         @endforeach
                     </div>
                     {{-- cover image --}}
-                    <label for="cover_image" class="my-2 text-capitalize"><span class="text-secondary">*</span>Cover
+                    <label for="cover_image" class="my-2 text-capitalize">Cover
                         Image</label>
                     <div class="custom__image-container">
                         <label id="add-img-label" for="add-single-img">+</label>

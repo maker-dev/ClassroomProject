@@ -21,18 +21,29 @@
                             <div class="card-body">
                                 <h5 class="card-title text-capitalize ls-1 fw-500">{{ $classroom->name }}</h5>
                                 <p class="card-text text-secondary">-{{ $classroom->subject }}</p>
-                                <form action="{{ route('classroom.destroy', ['id' => $classroom->classroom_id]) }}"
-                                    method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <a href="{{ route('classroom.show', ['id' => $classroom->classroom_id]) }}"
-                                        class="btn btn-primary">Enter</a>
-                                    @if ($classroom->IsTeacher(auth()->id()))
-                                        <a href="{{ route('classroom.edit', ['id' => $classroom->classroom_id]) }}"
-                                            class="btn btn-info">edit</a>
-                                        <button class="btn btn-danger">Delete</button>
+                                <div class="d-flex flex-wrap">
+
+                                    <form action="{{ route('classroom.destroy', ['id' => $classroom->classroom_id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <a href="{{ route('classroom.show', ['id' => $classroom->classroom_id]) }}"
+                                            class="btn btn-primary">Enter</a>
+                                        @if ($classroom->IsTeacher(auth()->id()))
+                                            <a href="{{ route('classroom.edit', ['id' => $classroom->classroom_id]) }}"
+                                                class="btn btn-info">edit</a>
+                                            <button class="btn btn-danger">Delete</button>
+                                        @endif
+                                    </form>
+                                    @if (!$classroom->IsTeacher(auth()->id()))
+                                        <form action="{{ route('classroom.exit', ['id' => $classroom->classroom_id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger mx-2">Exit</button>
+                                        </form>
                                     @endif
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

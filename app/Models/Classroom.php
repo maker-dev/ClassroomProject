@@ -9,7 +9,7 @@ class Classroom extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "subject", "description", "cover_image"];
+    protected $fillable = ["name", "subject", "description", "cover_image", "background_image"];
 
     public function secret_code()
     {
@@ -18,7 +18,7 @@ class Classroom extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot("role");
     }
 
     public function lessons()
@@ -47,9 +47,9 @@ class Classroom extends Model
         return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
             ->where('classroom_user.user_id', $userId)->where("classroom_user.role", "teacher")->exists();
     }
-    public function teacher()
+    public function scopeTeacherName($query)
     {
-        return $this->belongsToMany(User::class, 'classroom_user')
-            ->wherePivot('role', 'teacher');
+        return $query->join('classroom_user', 'classrooms.id', '=', 'classroom_user.classroom_id')
+            ->where('classroom_user.role', "teacher")->join("users", "classroom_user.user_id", "=", "users.id")->get()[0]->name;
     }
 }

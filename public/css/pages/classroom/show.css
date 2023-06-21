@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+overflow-x: auto;
 }
 
 .classroom-navbar ul {
@@ -208,7 +209,7 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  
+
 }
 
 .classroom-code-container p {

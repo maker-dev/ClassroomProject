@@ -24,12 +24,18 @@ class ClassroomPolicy
         return $user->classrooms()->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
 
+
     /**
      * Determine whether the user can create models.
      */
     public function create(User $user)
     {
         //
+    }
+
+    public function createLesson(User $user, Classroom $classroom)
+    {
+        return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
 
     /**
@@ -44,6 +50,16 @@ class ClassroomPolicy
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Classroom $classroom)
+    {
+        return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
+    }
+
+    public function exit(User $user, Classroom $classroom)
+    {
+        return $user->classrooms()->where("role", "student")->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
+    }
+
+    public function kick(User $user, Classroom $classroom)
     {
         return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
     }
