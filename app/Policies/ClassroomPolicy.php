@@ -74,6 +74,11 @@ class ClassroomPolicy
 
         return $user->classrooms()->where('role', 'student')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists() && $assignment->deadline >= now() && !$assignment->assignment_resolvers()->exists();
     }
+    public function viewAssignmentResolvers(User $user, Classroom $classroom)
+    {
+
+        return $user->classrooms()->where('role', 'teacher')->where("classroom_id", $classroom->id)->where("user_id", $user->id)->exists();
+    }
     /**
      * Determine whether the user can restore the model.
      */

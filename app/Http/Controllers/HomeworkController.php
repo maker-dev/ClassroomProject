@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment; 
 use App\Models\Classroom;
-use App\Models\Assignment;
+use App\Models\AssignmentResolver;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\User;
 class HomeworkController extends Controller
 {
     public function index(string $id)
     {
         $classroom = Classroom::findOrFail($id);
+        $user = User::findOrFail(auth()->id());
         Gate::authorize("view", $classroom);
         $assignments   = Assignment::where("classroom_id", $classroom->id)->orderBy("created_at", "desc")->paginate(6);
-        return view("homework.index", compact("classroom", "assignments"));
+        return view("homework.index", compact("classroom", "assignments", "user"));
     }
 
     public function create(string $id)
@@ -77,7 +79,7 @@ class HomeworkController extends Controller
         // Storing file
         $file = $request->file("filename");
         $file_extension = $file->getClientOriginalExtension();
-        $file_name = $file->hashName() . '.' . $file_extension;
+        $file_name = $file->hashName();
         $file->storeAs("public/assignment_resolvers", $file_name);
 
         // Storing data
@@ -88,6 +90,17 @@ class HomeworkController extends Controller
 
         return redirect()->route("homework.index", ['id' => $classroom->id]);
     }
+    public function viewwork(string $classroom_id, string $assignment_id){
+
+        $assignment = Assignment::findOrFail($assignment_id);
+        $classroom = $assignment->classroom;
+    
+        Gate::authorize("viewAssignmentResolvers", [$classroom]);
+    
+        $resolvers = $assignment->assignment_resolvers()->with('user')->get();
+    
+        return view("homework.viewwork", compact("classroom", "assignment", "resolvers"));
+    }
 
     public function download(string $id)
     {
@@ -96,4 +109,11 @@ class HomeworkController extends Controller
         $filename = $assignment->title . '.' . pathinfo($filePath, PATHINFO_EXTENSION);
         return Storage::download($filePath, $filename);
     }
+    public function downloadwork(string $id){
+        $resolver = AssignmentResolver::find($id);
+        $filePath = "public/assignment_resolvers/{$resolver->filename}";
+        $filename = $resolver->user->name.'.'.pathinfo($filePath, PATHINFO_EXTENSION);; 
+        return Storage::download($filePath, $filename);
+    }
+
 }

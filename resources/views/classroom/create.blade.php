@@ -77,8 +77,6 @@
                     </div>
                     <button class="btn btn-success mt-3">Create</button>
             </div>
-
-
             </form>
         </div>
         </div>

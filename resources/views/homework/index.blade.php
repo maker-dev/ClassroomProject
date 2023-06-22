@@ -48,11 +48,14 @@
                                         @elseif ($assignment->AssignmentResolved($assignment->id))
                                             <i class="fa-solid fa-check text-success mx-2 h3"></i>
                                         @elseif($assignment->deadline <= now())
-                                            <i class="fa-solid fa-ban mx-2 h3"></i>
+                                            <i class="fa-solid fa-ban mx-2 h3 text-danger"></i>
                                         @endif
+                                    @else   
+                                        <a class="btn btn-primary" href="{{route('homework.viewwork', ['classroom_id' => $classroom->id, 'assignment_id' => $assignment->id])}}">Show Works</a>
                                     @endif
                                     <button class="btn btn-info">Download</button>
                                 </form>
+                                
                             </div>
                         </li>
                     @endforeach
